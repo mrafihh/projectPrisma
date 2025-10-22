@@ -1,0 +1,23 @@
+// src/app.module.ts
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { PrismaModule } from '../prisma/prisma.module';
+import { UserModule } from '../user/user.module';
+import { ProductModule } from '../product/product.module';
+import { TransactionModule } from '../transaction/transaction.module';
+import { AuthModule } from '../auth/auth.module';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    PrismaModule,
+    AuthModule,
+    UserModule,
+    ProductModule,
+    TransactionModule,
+  ],
+})
+export class AppModule {}
